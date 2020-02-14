@@ -1,0 +1,126 @@
+package metodosnumericos;
+
+import javax.swing.*;
+
+public class metodosNumericos {
+
+    public static void main(String[] args) {
+        int valor1, valor2,opc;
+        valor1 = Integer.parseInt(JOptionPane.showInputDialog("DIGITE SU OPCIÃ“N\n 1Â° TEMA I"));
+        switch(valor1){
+            case 1:
+                valor2 = Integer.parseInt(JOptionPane.showInputDialog("DIGITE SU OPCIÃ“N\n 1Â° ERRORES"));
+                switch(valor2){
+                
+                    case 1:
+                                          
+                            
+                        
+                        opc = Integer.parseInt(JOptionPane.showInputDialog("SELECCIONE UNA OPCIÃ“N\n 1Â° ERROR REDONDEO\n 2Â° ERROR TRUNCAMIENTO"));
+                        
+                        switch(opc){
+                        case 1:
+                            JOptionPane.showMessageDialog(null,"BIENVENIDO A ERROR DE REDONDEO");
+                            double dato1 = Double.parseDouble(JOptionPane.showInputDialog("INGRESE EL VALOR VERDADERO"));
+                            double dato2 = Double.parseDouble(JOptionPane.showInputDialog("INGRESE EL VALOR APROXIMADO"));
+                            int c = Integer.parseInt(JOptionPane.showInputDialog("DIGITE EL VALOR DE NUMEROS A REDONDEAR"));
+                            
+                            double er_absoluto = 0,
+er_relativo, er_porcentaje;
+                            er_absoluto = Math.abs(dato1 - dato2);
+                            er_relativo = (Math.abs(er_absoluto / dato1));
+                            er_porcentaje = Math.abs((er_relativo * 100));
+                            
+                            JOptionPane.showMessageDialog(null, "RESULTADOS:\n" + 
+                                    "ERROR ABSOLUTO: " + redondearDecimales(er_absoluto, c)
+                                    +"\nERROR RELATIVO: " + redondearDecimales(er_relativo, c)
+                                    +"\nERROR PORCENTAJE: " + redondearDecimales(er_porcentaje, c));
+                            
+                
+                    break;
+                    
+                        case 2:
+                            
+                            JOptionPane.showMessageDialog(null,"BIENVENIDO A ERROR DE TRUNCAMIENTO");
+                            double dato3 = Double.parseDouble(JOptionPane.showInputDialog("INGRESE EL VALOR VERDADERO"));
+                            double dato4 = Double.parseDouble(JOptionPane.showInputDialog("INGRESE EL VALOR APROXIMADO"));
+                            int t = Integer.parseInt(JOptionPane.showInputDialog("DIGITE EL VALOR DE NUMEROS A REDONDEAR"));
+                            
+//-----------------------------------------------------------------------------------------------------------------------------------
+                                //OPERACIONES
+                            double er_absoluto1, er_relativo1, er_porcentaje1;
+                            er_absoluto1 = Math.abs(dato3 - dato4);
+                            er_relativo1 = (Math.abs(er_absoluto1 / dato3));
+                            er_porcentaje1 = (Math.abs(er_relativo1 * 100));
+                            
+                            
+                            
+//_______________________________________________________________________________________________________________________________________________________
+                            
+                            //error absoluto
+                            if (er_absoluto1 > 0) {
+                                er_absoluto1 = Math.floor(er_absoluto1 * Math.pow(10, t)) / Math.pow(10, t);
+                            } else {
+                                er_absoluto1 = Math.ceil(er_absoluto1 * Math.pow(10, t)) / Math.pow(10, t);
+                            }
+
+//______________________________________________________________________________________________________________________________________________________                           
+                           
+                           //error relativo
+                            if (er_relativo1 > 0) {
+                                er_relativo1 = Math.floor(er_relativo1 * Math.pow(10, t)) / Math.pow(10, t);
+                            } else {
+                                er_relativo1 = Math.ceil(er_relativo1 * Math.pow(10, t)) / Math.pow(10, t);
+                            }
+//_____________________________________________________________________________________________________________________________________________________
+                            
+                            //error porcentaje
+                            if (er_porcentaje1 > 0) {
+                                er_porcentaje1 = Math.floor(er_porcentaje1 * Math.pow(10, t)) / Math.pow(10, t);
+                            } else {
+                                er_porcentaje1 = Math.ceil(er_porcentaje1 * Math.pow(10, t)) / Math.pow(10, t);
+                            }
+//_______________________________
+//____________________________________________________________________________________________________________________________________________________
+                    //impresiones
+                           
+                           
+                           JOptionPane.showMessageDialog(null,"RESULTADOS: \nERROR ABSOLUTO: " + er_absoluto1 + "\nERROR RELATIVO: " + er_relativo1 + "\nERROR PORCENTAJE: " + er_porcentaje1);
+                           
+                        
+                           
+                           
+//____________________________________________________________________________________________________________________________________________________
+                                                       
+                            
+                            break;
+                            default:JOptionPane.showMessageDialog(null, "VALOR NO ENCONTRADO, REINTENTA DE NUEVO");
+                    }
+                        break;
+                    default:JOptionPane.showMessageDialog(null, "VALOR NO ENCONTRADO, REINTENTA DE NUEVO");
+                }
+
+                break;
+            default: JOptionPane.showMessageDialog(null, "VALOR NO ENCONTRADO, REINTENTA DE NUEVO");
+        }
+
+    }
+    
+    public void trunc(double val, int d) {
+        
+    }
+    
+    
+    
+    
+    public static double redondearDecimales(double valorInicial, int numeroDecimales) {
+        double parteEntera, resultado;
+        resultado = valorInicial;
+        parteEntera = Math.floor(resultado);
+        resultado = (resultado - parteEntera) * Math.pow(10, numeroDecimales);
+        resultado = Math.round(resultado);
+        resultado = (resultado / Math.pow(10, numeroDecimales)) + parteEntera;
+        return resultado;
+    }
+    
+}
