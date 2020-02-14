@@ -1,0 +1,98 @@
+package metodosnumericos;
+
+import javax.swing.*;
+
+public class metodosNumericos {
+
+    public static void main(String[] args) {
+        int valor1, valor2,opc;
+        valor1 = Integer.parseInt(JOptionPane.showInputDialog("DIGITE SU OPCIÓN\n 1° TEMA I"));
+        switch(valor1){
+            case 1:
+                valor2 = Integer.parseInt(JOptionPane.showInputDialog("DIGITE SU OPCIÓN\n 1° ERRORES"));
+                switch(valor2){
+                
+                    case 1:
+                                          
+                            
+                        
+                        opc = Integer.parseInt(JOptionPane.showInputDialog("SELECCIONE UNA OPCIÓN\n 1° ERROR REDONDEO\n 2° ERROR TRUNCAMIENTO"));
+                        
+                        switch(opc){
+                        case 1:
+                            JOptionPane.showMessageDialog(null,"BIENVENIDO A ERROR DE REDONDEO");
+                                                        
+                
+                    break;
+                    
+                        case 2:
+                            
+                            JOptionPane.showMessageDialog(null,"BIENVENIDO A ERROR DE TRUNCAMIENTO");
+                            double dato3 = Double.parseDouble(JOptionPane.showInputDialog("INGRESE EL VALOR VERDADERO"));
+                            double dato4 = Double.parseDouble(JOptionPane.showInputDialog("INGRESE EL VALOR APROXIMADO"));
+                            int t = Integer.parseInt(JOptionPane.showInputDialog("DIGITE EL VALOR DE NUMEROS A REDONDEAR"));
+                            
+//-----------------------------------------------------------------------------------------------------------------------------------
+                                //OPERACIONES
+                            double er_absoluto1, er_relativo1, er_porcentaje1;
+                            er_absoluto1 = Math.abs(dato3 - dato4);
+                            er_relativo1 = (Math.abs(er_absoluto1 / dato3));
+                            er_porcentaje1 = (Math.abs(er_relativo1 * 100));
+                            
+                            
+                            
+//_______________________________________________________________________________________________________________________________________________________
+                            
+                            //error absoluto
+                            if (er_absoluto1 > 0) {
+                                er_absoluto1 = Math.floor(er_absoluto1 * Math.pow(10, t)) / Math.pow(10, t);
+                            } else {
+                                er_absoluto1 = Math.ceil(er_absoluto1 * Math.pow(10, t)) / Math.pow(10, t);
+                            }
+
+//______________________________________________________________________________________________________________________________________________________                           
+                           
+                           //error relativo
+                            if (er_relativo1 > 0) {
+                                er_relativo1 = Math.floor(er_relativo1 * Math.pow(10, t)) / Math.pow(10, t);
+                            } else {
+                                er_relativo1 = Math.ceil(er_relativo1 * Math.pow(10, t)) / Math.pow(10, t);
+                            }
+//_____________________________________________________________________________________________________________________________________________________
+                            
+                            //error porcentaje
+                            if (er_porcentaje1 > 0) {
+                                er_porcentaje1 = Math.floor(er_porcentaje1 * Math.pow(10, t)) / Math.pow(10, t);
+                            } else {
+                                er_porcentaje1 = Math.ceil(er_porcentaje1 * Math.pow(10, t)) / Math.pow(10, t);
+                            }
+//_______________________________
+//____________________________________________________________________________________________________________________________________________________
+                    //impresiones
+                           
+                           
+                           JOptionPane.showMessageDialog(null,"RESULTADOS: \nERROR ABSOLUTO: " + er_absoluto1 + "\nERROR RELATIVO: " + er_relativo1 + "\nERROR PORCENTAJE: " + er_porcentaje1);
+                           
+                        
+                           
+                           
+//____________________________________________________________________________________________________________________________________________________
+                                                       
+                            
+                            break;
+                            default:JOptionPane.showMessageDialog(null, "VALOR NO ENCONTRADO, REINTENTA DE NUEVO");
+                    }
+                        break;
+                    default:JOptionPane.showMessageDialog(null, "VALOR NO ENCONTRADO, REINTENTA DE NUEVO");
+                }
+
+                break;
+            default: JOptionPane.showMessageDialog(null, "VALOR NO ENCONTRADO, REINTENTA DE NUEVO");
+        }
+
+    }
+    
+
+   
+    
+}
